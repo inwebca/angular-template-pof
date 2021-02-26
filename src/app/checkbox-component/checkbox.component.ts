@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 
 @Component({
-  selector: "dropdown-component",
-  templateUrl: "./dropdown-component.html"
+  selector: "checkbox-component",
+  templateUrl: "./checkbox-component.html"
 })
 export class CheckboxComponent implements OnInit {
   ngOnInit() {}
