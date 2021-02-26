@@ -3,7 +3,7 @@ import { Observable, of } from "rxjs";
 
 @Component({
   selector: "dropdown-component",
-  templateUrl: "./dropdown-component.html"
+  templateUrl: "./dropdown.component.html"
 })
 export class DropdownComponent implements OnInit {
   ngOnInit() {}

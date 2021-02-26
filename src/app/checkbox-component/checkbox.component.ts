@@ -3,7 +3,7 @@ import { Observable, of } from "rxjs";
 
 @Component({
   selector: "checkbox-component",
-  templateUrl: "./checkbox-component.html"
+  templateUrl: "./checkbox.component.html"
 })
 export class CheckboxComponent implements OnInit {
   ngOnInit() {}
