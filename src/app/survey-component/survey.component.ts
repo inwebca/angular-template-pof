@@ -1,19 +1,11 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { of } from "rxjs";
 
 @Component({
-  selector: "hello",
-  template: `
-    <h1>Hello {{ name }}!</h1>
-  `,
-  styles: [
-    `
-      h1 {
-        font-family: Lato;
-      }
-    `
-  ]
+  selector: "survey-component",
+  templateUrl: "./survey-component.html"
 })
-export class HelloComponent implements OnInit {
+export class SurveyComponent implements OnInit {
   componentList: ComponentType[];
 
   @Input() name: string;
@@ -25,8 +17,6 @@ export class HelloComponent implements OnInit {
     ];
 
     const componentList$ = of(this.componentList);
-
-    componentList$.sub;
   }
 }
 
