@@ -5,6 +5,6 @@ import { Observable, of } from "rxjs";
   selector: "dropdown-component",
   templateUrl: "./dropdown-component.html"
 })
-export class DropdownComponent implements OnInit {
+export class CheckboxComponent implements OnInit {
   ngOnInit() {}
 }
