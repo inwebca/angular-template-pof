@@ -1,1 +1,13 @@
-test
+<ul>
+  <li *ngFor="let criteria of componentList$ | async">
+    {{criteria | json}}
+    <ng-container [ngSwitch]="criteria.type">
+      <ng-container *ngSwitchCase="1">
+        <dropdown-component></dropdown-component>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <checkbox-component></checkbox-component>
+      </ng-container>
+    </ng-container>
+  </li>
+</ul>

@@ -12,8 +12,8 @@ export class SurveyComponent implements OnInit {
 
   ngOnInit() {
     const criteriaKits = [
-      new CriteriaKit(1, "question 1 ?"),
-      new CriteriaKit(2, "question 2 ?")
+      new CriteriaKit(1, "question 1 ?", Type.Checkbox),
+      new CriteriaKit(2, "question 2 ?", Type.Dropdown)
     ];
 
     this.componentList$ = of(criteriaKits);
@@ -21,15 +21,22 @@ export class SurveyComponent implements OnInit {
 }
 
 export class CriteriaKit {
-  constructor(id: number, question: string) {
+  constructor(id: number, question: string, type: Type) {
     this.id = id;
     this.question = question;
+    this.type = type;
   }
   id: number;
   question: string;
+  type: Type;
   detail: CriteriaKitDetail;
 }
 
 export class CriteriaKitDetail {
   id: number;
+}
+
+export enum Type {
+  Dropdown = 1,
+  Checkbox = 2
 }
