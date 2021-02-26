@@ -1,30 +1,35 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { of } from "rxjs";
+import { Observable, of } from "rxjs";
 
 @Component({
   selector: "survey-component",
   templateUrl: "./survey-component.html"
 })
 export class SurveyComponent implements OnInit {
-  componentList: ComponentType[];
+  componentList$: Observable<CriteriaKit[]>;
 
   @Input() name: string;
 
   ngOnInit() {
-    this.componentList = [
-      new ComponentType(1, "dropdown"),
-      new ComponentType(2, "checkbox")
+    const criteriaKits = [
+      new CriteriaKit(1, "question 1 ?"),
+      new CriteriaKit(2, "question 2 ?")
     ];
 
-    const componentList$ = of(this.componentList);
+    this.componentList$ = of(criteriaKits);
   }
 }
 
-export class ComponentType {
-  constructor(id, kind) {
+export class CriteriaKit {
+  constructor(id: number, question: string) {
     this.id = id;
-    this.kind = kind;
+    this.question = question;
   }
   id: number;
-  kind: string;
+  question: string;
+  detail: CriteriaKitDetail;
+}
+
+export class CriteriaKitDetail {
+  id: number;
 }
