@@ -16,7 +16,7 @@ export class CheckboxComponent implements OnInit {
   ngOnInit() {
     const detailsObs$ = of(this.details);
 
-    const test = detailsObs$.pipe(
+    this.details$ = detailsObs$.pipe(
       map(values =>
         values.map(
           item =>
@@ -28,8 +28,6 @@ export class CheckboxComponent implements OnInit {
         )
       )
     );
-
-    this.details$ = test;
   }
 }
 
