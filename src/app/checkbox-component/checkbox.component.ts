@@ -8,5 +8,6 @@ import { ICriteriaKitDetails } from "../survey-component/survey.component";
 })
 export class CheckboxComponent implements OnInit {
   @Input() details: Array<ICriteriaKitDetails>;
+  @Input() question: string;
   ngOnInit() {}
 }

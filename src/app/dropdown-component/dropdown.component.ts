@@ -8,6 +8,7 @@ import { ICriteriaKitDetails } from "../survey-component/survey.component";
 })
 export class DropdownComponent implements OnInit {
   @Input() details: Array<ICriteriaKitDetails>;
+  @Input() question: string;
 
   ngOnInit() {}
 }
