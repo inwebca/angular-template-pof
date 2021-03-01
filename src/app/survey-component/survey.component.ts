@@ -6,42 +6,64 @@ import { Observable, of } from "rxjs";
   templateUrl: "./survey-component.html"
 })
 export class SurveyComponent implements OnInit {
-  componentList$: Observable<CriteriaKit[]>;
+  componentList$: Observable<ICriteriaKit[]>;
 
   @Input() name: string;
 
   ngOnInit() {
-    const criteriaKits = [
-      new CriteriaKit(1, "question 1 ?", "dropdown"),
-      new CriteriaKit(2, "question 2 ?", "checkbox")
+    const criteriaKits: Array<ICriteriaKit> = [
+      {
+        id: 1,
+        name: "dropdown",
+        kind: Type.DROPDOWN,
+        question: "question1",
+        details: [
+          {
+            id: 1,
+            label: "choice1",
+            value: "choice1"
+          },
+          {
+            id: 2,
+            label: "choice2",
+            value: "choice2"
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: "checkbox",
+        kind: Type.CHECKBOX,
+        question: "question2",
+        details: [
+          {
+            id: 1,
+            label: "choice1",
+            value: false
+          }
+        ]
+      }
     ];
 
     this.componentList$ = of(criteriaKits);
   }
 }
 
-export class CriteriaKit {
-  constructor(id: number, question: string, kind: string) {
-    this.id = id;
-    this.question = question;
-    this.kind = kind;
-  }
+export interface ICriteriaKit {
   id: number;
+  name: string;
   question: string;
-  kind : string
-  // kind: Kind;
+  kind: Type;
+  details: Array<ICriteriaKitDetails>;
 }
 
-type Kind = Dropdown | Checkbox;
-
-class Dropdown {
-  readonly kindName: string = "dropdown";
-  constructor(data: Array<any>){
-    this.data = data;
-  }
-  data: Array<any>;
+export interface ICriteriaKitDetails {
+  id: number;
+  label: string;
+  value: string | boolean;
 }
 
-class Checkbox {
-  readonly kindName: string = "checkbox";
+enum Type {
+  DROPDOWN,
+  CHECKBOX
 }
