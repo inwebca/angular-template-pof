@@ -1,2 +1,3 @@
-<select ng-model="detailsTest" ng-options="x for x in detailsTest">
+<select *ngFor="let detail of detailsTest">
+<option >{{detail.id}}</option>
 </select>
