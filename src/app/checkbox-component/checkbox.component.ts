@@ -1,14 +1,14 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { map, tap } from "rxjs/operators";
-import { ICriteriaKitDetails, ICriteriaKitDetailsCheckbox } from "../survey-component/survey.component";
+import { ICriteriaKitDetails } from "../survey-component/survey.component";
 
 @Component({
   selector: "checkbox-component",
   templateUrl: "./checkbox.component.html"
 })
 export class CheckboxComponent implements OnInit {
-  @Input() details: Array<ICriteriaKitDetailsCheckbox>;
+  @Input() details: Array<ICriteriaKitDetails>;
   @Input() question: string;
 
   details$: Observable<CriteriaKitDetailsCheckbox[]>;

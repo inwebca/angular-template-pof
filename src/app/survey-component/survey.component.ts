@@ -22,12 +22,12 @@ export class SurveyComponent implements OnInit {
             id: 1,
             label: "choice1",
             value: "choice1"
-          } as ICriteriaKitDetailsDropdown,
+          },
           {
             id: 2,
             label: "choice2",
             value: "choice2"
-          } as ICriteriaKitDetailsDropdown
+          }
         ]
       },
       {
@@ -40,12 +40,12 @@ export class SurveyComponent implements OnInit {
             id: 1,
             label: "choice1",
             value: false
-          } as ICriteriaKitDetailsCheckbox,
+          },
           {
             id: 2,
             label: "choice2",
             value: true
-          } as ICriteriaKitDetailsCheckbox
+          }
         ]
       }
     ];
@@ -59,19 +59,13 @@ export interface ICriteriaKit {
   name: string;
   question: string;
   kind: Type;
-  details: Array<ICriteriaKitDetailsDropdown | ICriteriaKitDetailsCheckbox>;
+  details: Array<ICriteriaKitDetails>;
 }
 
-export interface ICriteriaKitDetailsDropdown {
+export interface ICriteriaKitDetails {
   id: number;
   label: string;
-  value: string;
-}
-
-export interface ICriteriaKitDetailsCheckbox {
-  id: number;
-  label: string;
-  value: boolean;
+  value: string | boolean;
 }
 
 enum Type {
