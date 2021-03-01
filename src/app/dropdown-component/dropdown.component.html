@@ -1,3 +1,5 @@
-dropdown
-<select ng-model="dataSource" ng-options="value for value in dataSource">
-</select>
+<ul>
+  <li *ngFor="let detail of detailsTest">
+    {{detail.id}}
+  </li>
+</ul>

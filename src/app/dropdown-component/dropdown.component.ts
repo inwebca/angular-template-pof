@@ -1,23 +1,16 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { ICriteriaKitDetails } from "../survey-component/survey.component";
 
 @Component({
   selector: "dropdown-component",
   templateUrl: "./dropdown.component.html"
 })
 export class DropdownComponent implements OnInit {
-  dataSource: Array<any>;
+  detailsTest: ICriteriaKitDetails[];
+  @Input() details: Array<ICriteriaKitDetails>;
 
   ngOnInit() {
-    this.dataSource = [
-      {
-        id: 1,
-        name: "test"
-      },
-      {
-        id: 2,
-        name: "test2"
-      }
-    ];
+    this.detailsTest = this.details;
   }
 }
