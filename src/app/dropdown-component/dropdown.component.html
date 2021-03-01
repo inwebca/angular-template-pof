@@ -1,4 +1,7 @@
 <h2>{{question}}</h2>
-<select>
-  <option *ngFor="let detail of details">{{detail.value}}</option>
-</select>
+
+<mat-select>
+    <mat-option *ngFor="let detail of details" [value]="detail.value">
+      {{detail.value}}
+    </mat-option>
+</mat-select>
