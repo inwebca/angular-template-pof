@@ -16,8 +16,14 @@ export class CheckboxComponent implements OnInit {
     test$
       .pipe(
         tap(value => console.log(value)),
-        map(values => values.map(item => item.id)),
-                tap(value => console.log(value)),
+        map(values =>
+          values.map(item => ({
+            id: item.id,
+            value: true,
+            label: item.label
+          }))
+        ),
+        tap(value => console.log(value))
       )
       .subscribe();
   }
