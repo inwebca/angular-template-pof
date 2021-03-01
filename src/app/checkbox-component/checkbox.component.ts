@@ -13,8 +13,15 @@ export class CheckboxComponent implements OnInit {
   ngOnInit() {
     const test$ = of(this.details);
 
-    test$.pipe(tap(value => console.log(value)));
+    test$
+      .pipe(
+        tap(value => console.log(value)),
+        map(values => values.map(item => item.id))
+      )
+      .subscribe();
 
     test$.subscribe();
   }
 }
+
+export class CriteriaKitDetails {}
