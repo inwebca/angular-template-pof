@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { filter, map, tap } from "rxjs/operators";
 
 @Component({
   selector: "survey-component",
@@ -39,7 +40,7 @@ export class SurveyComponent implements OnInit {
           {
             id: 1,
             label: "choice1",
-            value: false
+            value: true
           },
           {
             id: 2,
@@ -51,6 +52,18 @@ export class SurveyComponent implements OnInit {
     ];
 
     this.componentList$ = of(criteriaKits);
+
+    const checkboxes = this.componentList$.pipe(
+      map(criterias =>
+        criterias.filter(criteria => criteria.kind === Type.CHECKBOX)
+      )
+    );
+
+    const dropdown = this.componentList$.pipe(
+      map(criterias =>
+        criterias.filter(criteria => criteria.kind === Type.DROPDOWN)
+      )
+    );
   }
 }
 
