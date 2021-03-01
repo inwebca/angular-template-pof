@@ -1,3 +1,6 @@
 <h2>{{question}}</h2>
-<label>{{ details[0].label }}</label>
-<input type="checkbox" [checked]="details[0].value" />
+
+<ng-template *ngFor="let detail of details">
+	<label>{{ detail.label }}</label>
+	<input type="checkbox" [checked]="detail.value" />
+</ng-template>
