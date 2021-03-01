@@ -1,10 +1,11 @@
 <ul>
 	<li *ngFor="let criteria of componentList$ | async">
-		<ng-container [ngSwitch]="criteria.type">
-			<ng-container *ngSwitchCase="1">
+		<ng-container [ngSwitch]="criteria.kind" >
+			<ng-container *ngSwitchCase="'dropdown'">
+        
 				<dropdown-component></dropdown-component>
 			</ng-container>
-			<ng-container *ngSwitchCase="2">
+			<ng-container *ngSwitchCase="'checkbox'">
 				<checkbox-component></checkbox-component>
 			</ng-container>
 		</ng-container>
