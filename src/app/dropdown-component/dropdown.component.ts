@@ -6,5 +6,18 @@ import { Observable, of } from "rxjs";
   templateUrl: "./dropdown.component.html"
 })
 export class DropdownComponent implements OnInit {
-  ngOnInit() {}
+  dataSource: Array<any>;
+
+  ngOnInit() {
+    this.dataSource = [
+      {
+        id: 1,
+        name: "test"
+      },
+      {
+        id: 2,
+        name: "test2"
+      }
+    ];
+  }
 }

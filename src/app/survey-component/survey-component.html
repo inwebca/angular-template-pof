@@ -1,8 +1,8 @@
 <ul>
 	<li *ngFor="let criteria of componentList$ | async">
+    
 		<ng-container [ngSwitch]="criteria.kind">
 			<ng-container *ngSwitchCase="'dropdown'">
-				1
 				<dropdown-component></dropdown-component>
 			</ng-container>
 			<ng-container *ngSwitchCase="'checkbox'">
