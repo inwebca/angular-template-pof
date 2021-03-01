@@ -16,11 +16,10 @@ export class CheckboxComponent implements OnInit {
     test$
       .pipe(
         tap(value => console.log(value)),
-        map(values => values.map(item => item.id))
+        map(values => values.map(item => item.id)),
+                tap(value => console.log(value)),
       )
       .subscribe();
-
-    test$.subscribe();
   }
 }
 
