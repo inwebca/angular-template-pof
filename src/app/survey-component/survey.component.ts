@@ -40,6 +40,11 @@ export class SurveyComponent implements OnInit {
             id: 1,
             label: "choice1",
             value: false
+          },
+          {
+            id: 2,
+            label: "choice2",
+            value: true
           }
         ]
       }
