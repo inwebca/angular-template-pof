@@ -7,12 +7,16 @@ import { filter, map, tap } from "rxjs/operators";
   templateUrl: "./survey-component.html"
 })
 export class SurveyComponent implements OnInit {
-  componentList$: Observable<ICriteriaKit[]>;
+  //componentList$: Observable<ICriteriaKit[]>;
 
   @Input() name: string;
 
+  constructor(private surveyService: SurveyService) {}
+
   ngOnInit() {
-    const criteriaKits: Array<ICriteriaKit> = [
+    const test = this.surveyService.getTest();
+
+    /* const criteriaKits: Array<ICriteriaKit> = [
       {
         id: 1,
         name: "dropdown",
@@ -49,7 +53,7 @@ export class SurveyComponent implements OnInit {
           }
         ]
       }
-    ];
+    ]; */
 
     this.componentList$ = of(criteriaKits);
 
@@ -65,23 +69,4 @@ export class SurveyComponent implements OnInit {
       )
     );
   }
-}
-
-export interface ICriteriaKit {
-  id: number;
-  name: string;
-  question: string;
-  kind: Type;
-  details: Array<ICriteriaKitDetails>;
-}
-
-export interface ICriteriaKitDetails {
-  id: number;
-  label: string;
-  value: string | boolean;
-}
-
-enum Type {
-  DROPDOWN,
-  CHECKBOX
 }
