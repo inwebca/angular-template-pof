@@ -40,15 +40,16 @@ export class SurveyService {
             id: 2,
             label: "choice2",
             value: true
+          },
+          {
+            id: 3,
+            label: "choice2",
+            value: false
           }
         ]
       }
     ];
     return of(criteriaKits);
-  }
-
-  public getTest(): boolean {
-    return true;
   }
 }
 

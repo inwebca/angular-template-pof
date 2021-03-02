@@ -14,22 +14,20 @@ export class CheckboxComponent implements OnInit {
   details$: Observable<CriteriaKitDetailsCheckbox[]>;
 
   ngOnInit() {
-    console.log(this.details);
+    const detailsObs$ = of(this.details);
 
-    // const detailsObs$ = of(this.details);
-
-    // this.details$ = detailsObs$.pipe(
-    //   map(values =>
-    //     values.map(
-    //       item =>
-    //         ({
-    //           id: item.id,
-    //           value: Boolean(item.value),
-    //           label: item.label
-    //         } as CriteriaKitDetailsCheckbox)
-    //     )
-    //   )
-    // );
+    this.details$ = detailsObs$.pipe(
+      map(values =>
+        values.map(
+          item =>
+            ({
+              id: item.id,
+              value: Boolean(item.value),
+              label: item.label
+            } as CriteriaKitDetailsCheckbox)
+        )
+      )
+    );
   }
 }
 
