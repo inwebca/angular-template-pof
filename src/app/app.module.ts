@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { SurveyComponent } from "./survey-component/survey.component";
 import { DropdownComponent } from "./dropdown-component/dropdown.component";
 import { CheckboxComponent } from "./checkbox-component/checkbox.component";
+import { SurveyService } from "./service/survey.service";
 
 @NgModule({
   imports: [
@@ -23,6 +24,9 @@ import { CheckboxComponent } from "./checkbox-component/checkbox.component";
     SurveyComponent,
     DropdownComponent,
     CheckboxComponent
+  ],
+  providers:[
+    SurveyService
   ],
   bootstrap: [AppComponent]
 })

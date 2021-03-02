@@ -4,13 +4,11 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class SurveyService {
-  constructor() {}
-
-  getSurveys(): ICriteriaKit[] {
+  public getSurveys(): ICriteriaKit[] {
     return Array<ICriteriaKit>();
   }
 
-  getTest(): boolean {
+  public getTest(): boolean {
     return true;
   }
 }

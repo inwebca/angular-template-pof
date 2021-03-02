@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { filter, map, tap } from "rxjs/operators";
+import { SurveyService } from "../services/survey.service";
 
 @Component({
   selector: "survey-component",
