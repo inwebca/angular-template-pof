@@ -15,7 +15,7 @@ export class SurveyComponent implements OnInit {
   constructor(private surveyService: SurveyService) {}
 
   ngOnInit() {
-    const test = this.surveyService.getTest();
+    let test = this.surveyService.getSurveys();
 
     /* const criteriaKits: Array<ICriteriaKit> = [
       {
