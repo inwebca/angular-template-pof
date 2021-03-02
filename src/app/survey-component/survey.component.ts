@@ -19,25 +19,5 @@ export class SurveyComponent implements OnInit {
 
   ngOnInit() {
     this.componentList$ = this.surveyService.getSurveys();
-
-    const checkboxes = this.componentList$.pipe(
-      map(criterias =>
-        criterias.filter(criteria => criteria.kind === Type.CHECKBOX)
-      )
-    );
-
-    const test = this.surveyService.getSurveys().pipe(
-      tap(value => console.log(value)),
-      map(criteriaKits => criteriaKits.map(critera => critera)),
-      tap(value => console.log(value))
-    );
-
-    test.subscribe();
-
-    // const dropdown = this.componentList$.pipe(
-    //   map(criterias =>
-    //     criterias.filter(criteria => criteria.kind === Type.DROPDOWN)
-    //   )
-    // );
   }
 }
