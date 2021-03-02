@@ -26,9 +26,13 @@ export class SurveyComponent implements OnInit {
       )
     );
 
-    checkboxes.subscribe(value => {
-      console.log(value);
-    });
+    const test = this.surveyService.getSurveys().pipe(
+      tap(value => console.log(value)),
+      map(criteriaKits => criteriaKits.map(critera => critera)),
+      tap(value => console.log(value))
+    );
+
+    test.subscribe();
 
     // const dropdown = this.componentList$.pipe(
     //   map(criterias =>
