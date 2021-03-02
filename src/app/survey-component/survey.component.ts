@@ -13,36 +13,26 @@ import {
   templateUrl: "./survey-component.html"
 })
 export class SurveyComponent implements OnInit {
-  componentList$: Observable<ICriteriaKit[]>;
+  componentList$: Observable<CriteriaKit[]>;
 
   constructor(private surveyService: SurveyService) {}
 
   ngOnInit() {
-    this.componentList$ = this.surveyService.getSurveys();
-
-    let test3 = this.componentList$.pipe(
+    this.componentList$ = this.surveyService.getSurveys().pipe(
       tap(value => console.log(value)),
-      map(criteriaKit => criteriaKit.map(kit => ({
-        id: kit.id,
-        name: kit.name,
-        question: kit.question,
-        kind: kit.kind,
-        details: (kit.kind === Type.CHECKBOX) ? new CriteriaKitDetailsCheckbox(kit.details) : 
-      } as CriteriaKit))),
-    )
-
-    test3.subscribe();
-
-    let test2 = this.componentList$.forEach(function(criteriaKit) {
-      criteriaKit.forEach(function(kit) {
-        switch (kit.kind) {
-          case Type.CHECKBOX:
-            return "checkbox";
-          case Type.DROPDOWN:
-            return "dropdown";
-        }
-      });
-    });
+      map(criteriaKit =>
+        criteriaKit.map(
+          kit =>
+            ({
+              id: kit.id,
+              name: kit.name,
+              question: kit.question,
+              kind: kit.kind,
+              details: kit.details
+            } as CriteriaKit)
+        )
+      )
+    );
   }
 }
 
@@ -57,17 +47,57 @@ export class CriteriaKit {
 export class CriteriaKitDetails {
   id: number;
   label: string;
+  value: boolean | string;
 }
 
-export class CriteriaKitDetailsDropdown extends CriteriaKitDetails{
-  value: string
-}
+// export class CriteriaKitDetailsDropdown extends CriteriaKitDetails {
+//   value: string;
+// }
 
-export class CriteriaKitDetailsCheckbox extends CriteriaKitDetails{
-  constructor(details: ICriteriaKitDetails[]){
-    super();
-    this.details = details;
-  }
-  details: ICriteriaKitDetails[];
-}
+// export class CriteriaKitDetailsCheckbox extends CriteriaKitDetails {
+//   value: boolean;
+// }
 
+// function convertToClass(
+//   details: ICriteriaKitDetails[],
+//   kind: Type
+// ): CriteriaKitDetailsDropdown[] | CriteriaKitDetailsCheckbox[] {
+//   switch (kind) {
+//     case Type.CHECKBOX:
+//       return criteriaKitDetailsCheckbox(details);
+//     case Type.DROPDOWN:
+//       return criteriaKitDetailsDropdown(details);
+//   }
+// }
+
+// function criteriaKitDetailsCheckbox(
+//   details: ICriteriaKitDetails[]
+// ): CriteriaKitDetailsCheckbox[] {
+//   let detailsCheckbox = Array<CriteriaKitDetailsCheckbox>();
+
+//   details.forEach(function(detail) {
+//     detailsCheckbox.push({
+//       id: detail.id,
+//       label: detail.label,
+//       value: Boolean(detail.value)
+//     });
+//   });
+
+//   return detailsCheckbox;
+// }
+
+// function criteriaKitDetailsDropdown(
+//   details: ICriteriaKitDetails[]
+// ): CriteriaKitDetailsDropdown[] {
+//   let detailsDropdown = Array<CriteriaKitDetailsDropdown>();
+
+//   details.forEach(function(detail) {
+//     detailsDropdown.push({
+//       id: detail.id,
+//       label: detail.label,
+//       value: detail.value.toString()
+//     });
+//   });
+
+//   return detailsDropdown;
+// }
