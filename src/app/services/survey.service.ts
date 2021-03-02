@@ -66,7 +66,7 @@ export interface ICriteriaKitDetails {
   value: string | boolean;
 }
 
-enum Type {
+export enum Type {
   DROPDOWN,
   CHECKBOX
 }

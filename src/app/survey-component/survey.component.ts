@@ -4,7 +4,8 @@ import { filter, map, tap } from "rxjs/operators";
 import {
   SurveyService,
   ICriteriaKit,
-  ICriteriaKitDetails
+  ICriteriaKitDetails,
+  Type
 } from "../services/survey.service";
 
 @Component({
@@ -12,7 +13,6 @@ import {
   templateUrl: "./survey-component.html"
 })
 export class SurveyComponent implements OnInit {
-  @Input() name: string;
   componentList$: Observable<ICriteriaKit[]>;
 
   constructor(private surveyService: SurveyService) {}
@@ -20,11 +20,15 @@ export class SurveyComponent implements OnInit {
   ngOnInit() {
     this.componentList$ = this.surveyService.getSurveys();
 
-    // const checkboxes = this.componentList$.pipe(
-    //   map(criterias =>
-    //     criterias.filter(criteria => criteria.kind === Type.CHECKBOX)
-    //   )
-    // );
+    const checkboxes = this.componentList$.pipe(
+      map(criterias =>
+        criterias.filter(criteria => criteria.kind === Type.CHECKBOX)
+      )
+    );
+
+    checkboxes.subscribe(value => {
+      console.log(value);
+    });
 
     // const dropdown = this.componentList$.pipe(
     //   map(criterias =>
