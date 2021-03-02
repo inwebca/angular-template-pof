@@ -13,11 +13,12 @@ import {
 })
 export class SurveyComponent implements OnInit {
   @Input() name: string;
+  componentList$: Observable<ICriteriaKit[]>;
 
   constructor(private surveyService: SurveyService) {}
 
   ngOnInit() {
-    let test = this.surveyService.getSurveys();
+    this.componentList$ = this.surveyService.getSurveys();
 
     // const checkboxes = this.componentList$.pipe(
     //   map(criterias =>

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { map, tap } from "rxjs/operators";
-import { ICriteriaKitDetails } from "../survey-component/survey.component";
+import { ICriteriaKitDetails } from "../services/survey.service";
 
 @Component({
   selector: "checkbox-component",

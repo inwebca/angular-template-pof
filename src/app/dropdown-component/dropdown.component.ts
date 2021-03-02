@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { ICriteriaKitDetails } from "../survey-component/survey.component";
+import { ICriteriaKitDetails } from "../services/survey.service";
 
 @Component({
   selector: "dropdown-component",
