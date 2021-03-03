@@ -16,7 +16,7 @@ import {
 })
 export class SurveyDialogComponent implements OnInit {
   formGroup: FormGroup;
-  formArray: FormArray;
+  form: FormArray;
 
   constructor(
     public dialogRef: MatDialogRef<SurveyDialogComponent>,
@@ -25,34 +25,45 @@ export class SurveyDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const group: any = {};
-
     this.formGroup = this._formBuilder.group({
-      form: this._formBuilder.array([])
+      form: this._formBuilder.array([this.init()])
     });
 
-    this.formArray = this.formGroup.get("form") as FormArray;
+    this.addItem();
 
-    this.data.questions.forEach(question => {
-      if (this.isMinMax(question)) {
-        const formGroup = this._formBuilder.group({
-          min: [question.choosedMin],
-          max: [question.choosedMax]
-        });
-        this.formArray.push(formGroup);
-      }
-      if (this.isMultipleChoice(question)) {
-        const formGroup = this._formBuilder.group({
-          choices: [question.choices],
-          values: [question.values]
-        });
+    // this.formArray = this.formGroup.get("form") as FormArray;
 
-        this.formArray.push(formGroup);
-      }
-    });
+    // this.data.questions.forEach(question => {
+    //   if (this.isMinMax(question)) {
+    //     const formGroup = this._formBuilder.group({
+    //       min: [question.choosedMin],
+    //       max: [question.choosedMax]
+    //     });
+    //     this.formArray.push(formGroup);
+    //   }
+    //   if (this.isMultipleChoice(question)) {
+    //     const formGroup = this._formBuilder.group({
+    //       choices: [question.choices],
+    //       values: [question.values]
+    //     });
 
-    console.log(this.formArray);
+    //     this.formArray.push(formGroup);
+    //   }
+    // });
+
+    console.log(this.form);
     console.log(this.formGroup);
+  }
+
+  init() {
+    return this._formBuilder.group({
+      cont: new FormControl("", null)
+    });
+  }
+
+  addItem() {
+    this.form = this.formGroup.get("form") as FormArray;
+    this.form.push(this.init());
   }
 
   onClose(): void {
