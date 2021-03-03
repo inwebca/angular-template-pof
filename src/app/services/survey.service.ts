@@ -8,6 +8,7 @@ export class SurveyService {
   public driverSurveys(): Observable<IDriverSurvey[]> {
     let driverSurveysArray: Array<IDriverSurvey> = [
       {
+        id: 1,
         startDate: "2021-01-01",
         endDate: "2021-02-01",
         savedDate: "2021-01-01",
@@ -22,6 +23,7 @@ export class SurveyService {
         ]
       },
       {
+        id: 2,
         startDate: "2022-01-01",
         endDate: "2022-02-01",
         savedDate: "2022-01-01",
@@ -39,9 +41,30 @@ export class SurveyService {
 
     return of(driverSurveysArray);
   }
+
+  public driverSurvey(id: number): IDriverSurvey {
+    let survey: IDriverSurvey = {
+      id: 1,
+      startDate: "2021-01-01",
+      endDate: "2021-02-01",
+      savedDate: "2021-01-01",
+      driver: { id: 1, name: "Test" },
+      questions: [
+        {
+          id: 1,
+          displayName: "1",
+          choosedMin: 1,
+          choosedMax: 2
+        } as IMinMaxQuestion
+      ]
+    };
+
+    return of(survey);
+  }
 }
 
 export interface IDriverSurvey {
+  id: number;
   startDate: string;
   endDate: string;
   savedDate: string;
