@@ -41,7 +41,13 @@ export class SurveyService {
           displayName: "1",
           choosedMin: 1,
           choosedMax: 2
-        } as IMinMaxQuestion
+        } as IMinMaxQuestion,
+        {
+          id: 1,
+          displayName: "2",
+          choices: [],
+          values: []
+        } as IMultipleChoiceQuestion
       ]
     };
 
@@ -73,4 +79,16 @@ export interface IMinMaxQuestion extends IQuestion {
   displayName: string;
   choosedMin: number;
   choosedMax: number;
+}
+
+export interface IMultipleChoiceQuestion extends IQuestion {
+  id: number;
+  displayName: string;
+  choices: Array<number>;
+  values: Array<IChoice>;
+}
+
+export interface IChoice {
+  value: number;
+  name: string;
 }
