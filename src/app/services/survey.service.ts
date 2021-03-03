@@ -13,8 +13,7 @@ export class SurveyService {
         savedDate: "2021-01-01", 
         driver: {id: 1, name: "Test"},
         question: [
-          
-
+          {id: 1, displayName: "1", choosedMin: 1, choosedMax: 2}
         ]
        }
     ]
@@ -31,17 +30,17 @@ export interface IDriverSurvey {
   questions: Array<IQuestion>;
 }
 
-interface IQuestion {
+export interface IQuestion {
   id: number;
   displayName: string;
 }
 
-interface IDriver {
+export interface IDriver {
   id: number;
   name: string;
 }
 
-interface IMinMaxQuestion implements IQuestion{​
+export interface IMinMaxQuestion extends IQuestion{​
     id: number;
     displayName: string;
     choosedMin: number;
