@@ -43,7 +43,7 @@ export class SurveyService {
           choosedMax: 2
         } as IMinMaxQuestion,
         {
-          id: 1,
+          id: 2,
           displayName: "Question 2",
           choices: [1],
           values: [

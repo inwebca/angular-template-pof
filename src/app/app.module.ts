@@ -6,6 +6,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatInputModule } from "@angular/material/input";
+import { MatStepperModule } from "@angular/material/stepper";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ReactiveFormsModule } from "@angular/forms";
 
@@ -23,6 +24,7 @@ import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.c
     MatSelectModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatStepperModule,
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule

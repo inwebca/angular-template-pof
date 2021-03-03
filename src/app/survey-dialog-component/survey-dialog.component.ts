@@ -1,4 +1,5 @@
 import { Component, Inject, Input, OnInit } from "@angular/core";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Observable, of } from "rxjs";
 import { filter, map, tap } from "rxjs/operators";
@@ -14,14 +15,44 @@ import {
   templateUrl: "./survey-dialog.component.html"
 })
 export class SurveyDialogComponent implements OnInit {
-  data2: IDriverSurvey;
+  formGroup: FormGroup;
+  formArray: FormArray;
+
   constructor(
     public dialogRef: MatDialogRef<SurveyDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IDriverSurvey
+    @Inject(MAT_DIALOG_DATA) public data: IDriverSurvey,
+    private _formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-    console.log(this.data);
+    const group: any = {};
+
+    this.formGroup = this._formBuilder.group({
+      form: this._formBuilder.array([])
+    });
+
+    this.formArray = this.formGroup.get("form") as FormArray;
+
+    this.data.questions.forEach(question => {
+      if (this.isMinMax(question)) {
+        const formGroup = this._formBuilder.group({
+          min: [question.choosedMin],
+          max: [question.choosedMax]
+        });
+        this.formArray.push(formGroup);
+      }
+      if (this.isMultipleChoice(question)) {
+        const formGroup = this._formBuilder.group({
+          choices: [question.choices],
+          values: [question.values]
+        });
+
+        this.formArray.push(formGroup);
+      }
+    });
+
+    console.log(this.formArray);
+    console.log(this.formGroup);
   }
 
   onClose(): void {

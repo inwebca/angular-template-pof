@@ -1,10 +1,29 @@
 <h1 mat-dialog-title>Survey</h1>
 <div mat-dialog-content>
 	<p>Survey id: {{data.id}}</p>
-	<div *ngFor="let question of data.questions">
+	<!-- <div *ngFor="let test of formGroup.controls;">
+		{{test}}
+	</div> -->
+	<!-- <form [formGroup]=" formGroup">
+		<mat-horizontal-stepper formArrayName="formArray">
+			<mat-step [formGroupName]="i" *ngFor="let customerGroup of formGroup.controls.form.controls; let i = index">
+				<ng-template matStepLabel>Step {{i + 1}}</ng-template>
+				<mat-form-field>
+					<input matInput placeholder="Address" formControlName="cont" required>
+      </mat-form-field>
+					<div>
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext>Next</button>
+					</div>
+			</mat-step>
+		</mat-horizontal-stepper>
+	</form> -->
+
+
+	<!-- <div *ngFor="let question of data.questions">
 		<min-max-component *ngIf="isMinMax(question)" [data]="question"></min-max-component>
 		<multiple-choice-component *ngIf="isMultipleChoice(question)" [data]="question"></multiple-choice-component>
-	</div>
+	</div> -->
 </div>
 <div mat-dialog-actions>
 	<button mat-button (click)="onClose()">Close</button>
