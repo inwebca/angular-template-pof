@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { SurveyComponent } from "./survey-component/survey.component";
 import { DropdownComponent } from "./dropdown-component/dropdown.component";
-import { CheckboxComponent } from "./checkbox-component/checkbox.component";
+import { MinMaxComponent } from "./min-max/min-max.component";
 import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.component";
 
 @NgModule({
@@ -27,7 +27,7 @@ import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.c
     AppComponent,
     SurveyComponent,
     DropdownComponent,
-    CheckboxComponent,
+    MinMaxComponent,
     SurveyDialogComponent
   ],
   bootstrap: [AppComponent]

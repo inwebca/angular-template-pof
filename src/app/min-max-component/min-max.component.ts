@@ -5,7 +5,7 @@ import { map, tap } from "rxjs/operators";
   selector: "checkbox-component",
   templateUrl: "./checkbox.component.html"
 })
-export class CheckboxComponent implements OnInit {
+export class MinMaxComponent implements OnInit {
   @Input() question: string;
 
   // details$: Observable<CriteriaKitDetailsCheckbox[]>;
