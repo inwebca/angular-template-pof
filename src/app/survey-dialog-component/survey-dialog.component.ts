@@ -2,7 +2,12 @@ import { Component, Inject, Input, OnInit } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Observable, of } from "rxjs";
 import { filter, map, tap } from "rxjs/operators";
-import { IDriverSurvey, SurveyService } from "../services/survey.service";
+import {
+  IDriverSurvey,
+  IMinMaxQuestion,
+  IMultipleChoiceQuestion,
+  SurveyService
+} from "../services/survey.service";
 
 @Component({
   selector: "survey-dialog-component",
@@ -21,5 +26,13 @@ export class SurveyDialogComponent implements OnInit {
 
   onClose(): void {
     this.dialogRef.close();
+  }
+
+  isMinMax(object: any): object is IMinMaxQuestion {
+    return "choosedMin" in object;
+  }
+
+  isMultipleChoice(object: any): object is IMultipleChoiceQuestion {
+    return "choices" in object;
   }
 }
