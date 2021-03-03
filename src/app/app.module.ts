@@ -9,8 +9,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app.component";
 import { SurveyComponent } from "./survey-component/survey.component";
-import { DropdownComponent } from "./dropdown-component/dropdown.component";
-import { MinMaxComponent } from "./min-max/min-max.component";
+import { MultipleChoiceComponent } from "./multiple-choice-component/multiple-choice.component";
+import { MinMaxComponent } from "./min-max-component/min-max.component";
 import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.component";
 
 @NgModule({
@@ -26,7 +26,7 @@ import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.c
   declarations: [
     AppComponent,
     SurveyComponent,
-    DropdownComponent,
+    MultipleChoiceComponent,
     MinMaxComponent,
     SurveyDialogComponent
   ],

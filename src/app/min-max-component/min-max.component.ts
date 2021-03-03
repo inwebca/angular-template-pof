@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { map, tap } from "rxjs/operators";
 @Component({
-  selector: "checkbox-component",
-  templateUrl: "./checkbox.component.html"
+  selector: "min-max-component",
+  templateUrl: "./min-max.component.html"
 })
 export class MinMaxComponent implements OnInit {
   @Input() question: string;

@@ -2,12 +2,8 @@
 <div mat-dialog-content>
 	<p>Survey id: {{data.id}}</p>
 	<div *ngFor="let question of data.questions">
-		<div *ngIf="isMinMax(question)">
-			minMax
-		</div>
-		<div *ngIf="isMultipleChoice(question)">
-			multipleChoice
-		</div>
+		<min-max-component *ngIf="isMinMax(question)"></min-max-component>
+		<multiple-choice-component *ngIf="isMultipleChoice(question)"></multiple-choice-component>
 	</div>
 </div>
 <div mat-dialog-actions>
