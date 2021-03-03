@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { MatSelectModule } from "@angular/material/select";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatInputModule } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app.component";
@@ -21,6 +22,7 @@ import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.c
     MatSelectModule,
     MatCheckboxModule,
     MatDialogModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
   declarations: [
