@@ -7,20 +7,25 @@ import { Observable, of } from "rxjs";
 export class SurveyService {
   public driverSurveys(): Observable<IDriverSurvey[]> {
     let driverSurveysArray: Array<IDriverSurvey> = [
-      { 
-        startDate: "2021-01-01", 
+      {
+        startDate: "2021-01-01",
         endDate: "2021-02-01",
-        savedDate: "2021-01-01", 
-        driver: {id: 1, name: "Test"},
-        question: [
-          {id: 1, displayName: "1", choosedMin: 1, choosedMax: 2}
+        savedDate: "2021-01-01",
+        driver: { id: 1, name: "Test" },
+        questions: [
+          {
+            id: 1,
+            displayName: "1",
+            choosedMin: 1,
+            choosedMax: 2
+          } as IMinMaxQuestion
         ]
-       }
-    ]
+      }
+    ];
 
     return of(driverSurveysArray);
-
   }
+}
 
 export interface IDriverSurvey {
   startDate: string;
@@ -40,9 +45,9 @@ export interface IDriver {
   name: string;
 }
 
-export interface IMinMaxQuestion extends IQuestion{​
-    id: number;
-    displayName: string;
-    choosedMin: number;
-    choosedMax: number;
-}​
+export interface IMinMaxQuestion extends IQuestion {
+  id: number;
+  displayName: string;
+  choosedMin: number;
+  choosedMax: number;
+}
