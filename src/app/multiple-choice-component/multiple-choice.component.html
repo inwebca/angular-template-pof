@@ -1,1 +1,8 @@
 <p>{{data.displayName}}</p>
+<mat-form-field appearance="fill">
+	<mat-select>
+		<mat-option *ngFor="let item of data.values" [value]="item.value">
+			{{item.name}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>

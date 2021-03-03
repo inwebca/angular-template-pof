@@ -11,5 +11,7 @@ import {
 export class MultipleChoiceComponent implements OnInit {
   @Input() data: IMultipleChoiceQuestion;
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.data.values);
+  }
 }

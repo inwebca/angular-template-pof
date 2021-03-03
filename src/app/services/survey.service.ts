@@ -45,8 +45,17 @@ export class SurveyService {
         {
           id: 1,
           displayName: "Question 2",
-          choices: [],
-          values: []
+          choices: [1],
+          values: [
+            {
+              value: 1,
+              name: "US"
+            },
+            {
+              value: 2,
+              name: "Canada"
+            }
+          ]
         } as IMultipleChoiceQuestion
       ]
     };
