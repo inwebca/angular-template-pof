@@ -19,16 +19,12 @@ export class SurveyComponent implements OnInit {
 
   onClick(surveyId: number) {
     const survey$ = this.surveyService.driverSurvey(surveyId);
-    survey$.subscribe(value => {
-      console.log(value);
-    });
-
-    const dialogRef = this.dialog.open(SurveyDialogComponent, {
-      width: "250px"
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log("The dialog was closed");
+    survey$.subscribe(survey => {
+      this.dialog.open(SurveyDialogComponent, {
+        width: "500px",
+        height: "500px",
+        data: { data: survey }
+      });
     });
   }
 }
