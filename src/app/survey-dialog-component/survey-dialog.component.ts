@@ -9,12 +9,15 @@ import { IDriverSurvey, SurveyService } from "../services/survey.service";
   templateUrl: "./survey-dialog.component.html"
 })
 export class SurveyDialogComponent implements OnInit {
+  data2: IDriverSurvey;
   constructor(
     public dialogRef: MatDialogRef<SurveyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IDriverSurvey
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.data);
+  }
 
   onClose(): void {
     this.dialogRef.close();

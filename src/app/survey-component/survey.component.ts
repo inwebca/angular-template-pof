@@ -23,7 +23,7 @@ export class SurveyComponent implements OnInit {
       this.dialog.open(SurveyDialogComponent, {
         width: "500px",
         height: "500px",
-        data: { data: survey }
+        data: survey
       });
     });
   }
