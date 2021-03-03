@@ -5,6 +5,23 @@ import { Observable, of } from "rxjs";
   providedIn: "root"
 })
 export class SurveyService {
+  public driverSurveys(): Observable<IDriverSurvey[]> {
+    let driverSurveys = Array<IDriverSurvey> = [
+      { 
+        startDate: "2021-01-01", 
+        endDate: "2021-02-01",
+        savedDate: "2021-01-01", 
+        driver: {id: 1, name: "Test"},
+        question: [
+          {id : 1, displayName: "test", choosenMin: 1, choosenMax: 2}: IMinMaxQuestion
+        ]
+       }
+    ]
+
+    return of(driverSurveys);
+
+  }
+
   public getSurveys(): Observable<ICriteriaKit[]> {
     let criteriaKits: Array<ICriteriaKit> = [
       {
@@ -53,21 +70,27 @@ export class SurveyService {
   }
 }
 
-export interface ICriteriaKit {
+export interface IDriverSurvey {
+  startDate: string;
+  endDate: string;
+  savedDate: string;
+  driver: IDriver;
+  questions: Array<IQuestion>;
+}
+
+interface IQuestion {
+  id: number;
+  displayName: string;
+}
+
+interface IDriver {
   id: number;
   name: string;
-  question: string;
-  kind: Type;
-  details: Array<ICriteriaKitDetails>;
 }
 
-export interface ICriteriaKitDetails {
-  id: number;
-  label: string;
-  value: string | boolean;
-}
-
-export enum Type {
-  DROPDOWN,
-  CHECKBOX
-}
+interface IMinMaxQuestion implements IQuestion{​
+    id: number;
+    displayName: string;
+    choosedMin: number;
+    choosedMax: number;
+}​

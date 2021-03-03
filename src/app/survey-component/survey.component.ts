@@ -18,21 +18,10 @@ export class SurveyComponent implements OnInit {
   constructor(private surveyService: SurveyService) {}
 
   ngOnInit() {
-    this.componentList$ = this.surveyService.getSurveys().pipe(
-      tap(value => console.log(value)),
-      map(criteriaKit =>
-        criteriaKit.map(
-          kit =>
-            ({
-              id: kit.id,
-              name: kit.name,
-              question: kit.question,
-              kind: kit.kind,
-              details: kit.details
-            } as CriteriaKit)
-        )
-      )
-    );
+    const test = this.surveyService.driverSurveys();
+    test.subscribe(value => {
+      console.log(value);
+    });
   }
 }
 
