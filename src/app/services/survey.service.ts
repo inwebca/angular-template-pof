@@ -20,6 +20,20 @@ export class SurveyService {
             choosedMax: 2
           } as IMinMaxQuestion
         ]
+      },
+      {
+        startDate: "2022-01-01",
+        endDate: "2022-02-01",
+        savedDate: "2022-01-01",
+        driver: { id: 2, name: "Test 2" },
+        questions: [
+          {
+            id: 1,
+            displayName: "1",
+            choosedMin: 1,
+            choosedMax: 2
+          } as IMinMaxQuestion
+        ]
       }
     ];
 
