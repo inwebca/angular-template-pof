@@ -14,4 +14,11 @@ export class SurveyComponent implements OnInit {
   ngOnInit() {
     this.driverSurveys$ = this.surveyService.driverSurveys();
   }
+
+  onClick(surveyId: number) {
+    const survey$ = this.surveyService.driverSurvey(surveyId);
+    survey$.subscribe(value => {
+      console.log(value);
+    });
+  }
 }

@@ -13,14 +13,7 @@ export class SurveyService {
         endDate: "2021-02-01",
         savedDate: "2021-01-01",
         driver: { id: 1, name: "Test" },
-        questions: [
-          {
-            id: 1,
-            displayName: "1",
-            choosedMin: 1,
-            choosedMax: 2
-          } as IMinMaxQuestion
-        ]
+        questions: []
       },
       {
         id: 2,
@@ -28,21 +21,14 @@ export class SurveyService {
         endDate: "2022-02-01",
         savedDate: "2022-01-01",
         driver: { id: 2, name: "Test 2" },
-        questions: [
-          {
-            id: 1,
-            displayName: "1",
-            choosedMin: 1,
-            choosedMax: 2
-          } as IMinMaxQuestion
-        ]
+        questions: []
       }
     ];
 
     return of(driverSurveysArray);
   }
 
-  public driverSurvey(id: number): IDriverSurvey {
+  public driverSurvey(id: number): Observable<IDriverSurvey> {
     let survey: IDriverSurvey = {
       id: 1,
       startDate: "2021-01-01",
