@@ -38,13 +38,13 @@ export class SurveyService {
       questions: [
         {
           id: 1,
-          displayName: "1",
+          displayName: "Question 1",
           choosedMin: 1,
           choosedMax: 2
         } as IMinMaxQuestion,
         {
           id: 1,
-          displayName: "2",
+          displayName: "Question 2",
           choices: [],
           values: []
         } as IMultipleChoiceQuestion

@@ -1,5 +1,11 @@
 <p>{{data.displayName}}</p>
-<mat-form-field>
-	<mat-label>Min</mat-label>
-	<input matInput value="test" placeholder="Ex. Pizza">
+<form [formGroup]="minMaxForm">
+	<mat-form-field>
+		<mat-label>Min</mat-label>
+		<input matInput formControlName="min">
 </mat-form-field>
+		<mat-form-field>
+			<mat-label>Max</mat-label>
+			<input matInput formControlName="max">
+</mat-form-field>
+</form>

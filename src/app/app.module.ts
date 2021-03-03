@@ -7,6 +7,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatInputModule } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { SurveyComponent } from "./survey-component/survey.component";
@@ -23,7 +24,8 @@ import { SurveyDialogComponent } from "./survey-dialog-component/survey-dialog.c
     MatCheckboxModule,
     MatDialogModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,

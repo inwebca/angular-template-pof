@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 import { Observable, of } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { IMinMaxQuestion } from "../services/survey.service";
@@ -9,21 +10,15 @@ import { IMinMaxQuestion } from "../services/survey.service";
 export class MinMaxComponent implements OnInit {
   @Input() data: IMinMaxQuestion;
 
-  // details$: Observable<CriteriaKitDetailsCheckbox[]>;
+  minMaxForm = new FormGroup({
+    min: new FormControl(""),
+    max: new FormControl("")
+  });
 
   ngOnInit() {
-    // const detailsObs$ = of(this.details);
-    // this.details$ = detailsObs$.pipe(
-    //   map(values =>
-    //     values.map(
-    //       item =>
-    //         ({
-    //           id: item.id,
-    //           value: Boolean(item.value),
-    //           label: item.label
-    //         } as CriteriaKitDetailsCheckbox)
-    //     )
-    //   )
-    // );
+    this.minMaxForm.patchValue({
+      min: this.data.choosedMin,
+      max: this.data.choosedMax
+    });
   }
 }
