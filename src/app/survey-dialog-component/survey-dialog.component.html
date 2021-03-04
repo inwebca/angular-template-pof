@@ -6,11 +6,21 @@
 		{{formGroup.value | json}}
 		<mat-horizontal-stepper>
 			<div *ngFor="let question of data.questions;let i=index;">
-				<div *ngIf="isMinMax(question)">
-					<mat-step formGroupName="minMax">
-						<ng-template matStepLabel>{{i+1}}</ng-template>
-						<min-max-component [group]="formGroup"></min-max-component>
-					</mat-step>
+				{{question  | json}}
+				<div [ngSwitch]="getType(question)">
+					<div *ngSwitchCase="'minMax'">
+						<mat-step formGroupName="minMax">
+							<ng-template matStepLabel>{{i+1}}</ng-template>
+							<min-max-component [group]="minMax"></min-max-component>
+						</mat-step>
+					</div>
+					<div *ngSwitchCase="'multipleChoice'">
+						<mat-step formGroupName="multipleChoice">
+							<ng-template matStepLabel>{{i+1}}</ng-template>
+							<min-max-component [group]="minMax"></min-max-component>
+						</mat-step>
+					</div>
+
 				</div>
 
 			</div>

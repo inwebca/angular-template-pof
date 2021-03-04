@@ -30,7 +30,7 @@ export class SurveyDialogComponent implements OnInit {
   }
 
   get minMax() {
-    return this.formGroup.get("minMax") as FormArray;
+    return this.formGroup.get("minMax") as FormGroup;
   }
 
   get multipleChoice() {
@@ -39,6 +39,11 @@ export class SurveyDialogComponent implements OnInit {
 
   get formArray() {
     return this.formGroup.get("formArray") as FormArray;
+  }
+
+  getType(question): any {
+    if (this.isMinMax) return "minMax";
+    if (this.isMultipleChoice) return "multipleChoice";
   }
 
   ngOnInit() {
