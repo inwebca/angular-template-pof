@@ -9,7 +9,7 @@
 				<div *ngIf="isMinMax(question)">
 					<mat-step formGroupName="minMax">
 						<ng-template matStepLabel>{{i+1}}</ng-template>
-						<min-max-component [formGroup]="minMax"></min-max-component>
+						<min-max-component [group]="formGroup"></min-max-component>
 					</mat-step>
 				</div>
 
