@@ -3,8 +3,7 @@
 	<p>Survey id: {{data.id}}</p>
 
 	<form [formGroup]="formGroup">
-		{{formGroup.value | json}}
-		<mat-horizontal-stepper>
+		<mat-horizontal-stepper #stepper>
 			<div *ngFor="let question of data.questions;let i=index;">
 				<div *ngIf="isMinMax(question)">
 					<mat-step formGroupName="minMax">
@@ -20,15 +19,16 @@
 					</mat-step>
 				</div>
 			</div>
+			<mat-step>
+				<ng-template matStepLabel>Done</ng-template>
+				<p>{{formGroup.value | json}}</p>
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button (click)="stepper.reset()">Reset</button>
+				</div>
+			</mat-step>
 		</mat-horizontal-stepper>
 	</form>
-
-
-
-	<!-- <div *ngFor="let question of data.questions">
-		<min-max-component *ngIf="isMinMax(question)" [data]="question"></min-max-component>
-		<multiple-choice-component *ngIf="isMultipleChoice(question)" [data]="question"></multiple-choice-component>
-	</div> -->
 </div>
 <div mat-dialog-actions>
 	<button mat-button (click)="onClose()">Close</button>
