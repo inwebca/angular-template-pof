@@ -3,8 +3,11 @@
 	<p>Survey id: {{data.id}}</p>
 	<form [formGroup]="formGroup">
 
-		<div *ngFor="let group of formGroup.controls; let i=index;">
-			{{group}}
+		<div *ngFor="let group of form.controls; let i=index;" [formGroupName]="i">
+
+			<div *ngFor="let control of group; let j=index;">
+
+			</div>
 
 
 		</div>

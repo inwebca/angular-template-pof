@@ -54,7 +54,6 @@ export class SurveyDialogComponent implements OnInit {
       }
     });
 
-    console.log(this.formGroup);
     console.log(this.form.controls);
 
     //const test = new FormGroup(group);
