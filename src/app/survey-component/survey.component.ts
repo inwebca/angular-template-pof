@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable, of } from "rxjs";
-import { filter, map, tap } from "rxjs/operators";
 import { IDriverSurvey, SurveyService } from "../services/survey.service";
 import { SurveyDialogComponent } from "../survey-dialog-component/survey-dialog.component";
 

@@ -1,15 +1,3 @@
-<!-- <div *ngFor="let criteria of componentList$ | async">
-	<ng-container [ngSwitch]="criteria.kind">
-		<ng-container *ngSwitchCase="0">
-			<dropdown-component [details]="criteria.details" [question]="criteria.question"></dropdown-component>
-		</ng-container>
-		<ng-container *ngSwitchCase="1">
-			<checkbox-component [details]="criteria.details" [question]="criteria.question"></checkbox-component>
-		</ng-container>
-	</ng-container>
-</div> -->
-
-
 <div *ngFor="let survey of driverSurveys$ | async">
 	<h2>Survey:</h2>
 	<div>start date : {{survey.startDate}}</div>

@@ -10,7 +10,9 @@ export class MultipleChoiceComponent implements OnInit {
   @Input() group: FormGroup;
   @Input() question: IQuestion;
 
-  ngOnInit() {
-    console.log(this.group.get("values"));
+  get valuesTest() {
+    return this.group.get("values");
   }
+
+  ngOnInit() {}
 }
