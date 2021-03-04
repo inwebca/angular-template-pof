@@ -3,18 +3,13 @@
 	<p>Survey id: {{data.id}}</p>
 	<form [formGroup]="formGroup">
 
+		<div *ngFor="let group of formGroup.controls; let i=index;">
+			{{group}}
 
 
-		<div formArrayName="group1">
-			<div *ngFor="let group of group1.controls; let i=index;" [formGroupName]="i">
-				<mat-form-field>
-					<input matInput placeholder="min" formControlName="min">
-        </mat-form-field>
-					<mat-form-field>
-						<input matInput placeholder="max" formControlName="max">
-        </mat-form-field>
-			</div>
 		</div>
+
+
 	</form>
 
 

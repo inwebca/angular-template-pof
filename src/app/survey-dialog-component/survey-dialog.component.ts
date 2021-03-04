@@ -28,15 +28,14 @@ export class SurveyDialogComponent implements OnInit {
     return this.formGroup.get("group1") as FormArray;
   }
 
+  get form() {
+    return this.formGroup.get("form") as FormArray;
+  }
+
   ngOnInit() {
     this.formGroup = this.fb.group({
-      group1: this.fb.array([]),
-      group2: this.fb.group({
-        email2: ""
-      })
+      form: this.fb.array([])
     });
-
-    const group: any = {};
 
     this.data.questions.forEach(question => {
       if (this.isMinMax(question)) {
@@ -44,12 +43,19 @@ export class SurveyDialogComponent implements OnInit {
           min: [],
           max: []
         });
-        this.group1.push(group);
+        this.form.push(group);
       }
 
       if (this.isMultipleChoice(question)) {
+        const group = this.fb.group({
+          values: []
+        });
+        this.form.push(group);
       }
     });
+
+    console.log(this.formGroup);
+    console.log(this.form.controls);
 
     //const test = new FormGroup(group);
     //console.log(test);
