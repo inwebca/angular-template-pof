@@ -1,3 +1,4 @@
+import { FormatWidth } from "@angular/common";
 import { Component, Inject, Input, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -16,22 +17,48 @@ import {
 })
 export class SurveyDialogComponent implements OnInit {
   formGroup: FormGroup;
-  form: FormArray;
 
   constructor(
     public dialogRef: MatDialogRef<SurveyDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IDriverSurvey,
-    private _formBuilder: FormBuilder
+    private fb: FormBuilder
   ) {}
 
+  get group1() {
+    return this.formGroup.get("group1") as FormArray;
+  }
+
   ngOnInit() {
-    this.formGroup = this._formBuilder.group({
-      form: this._formBuilder.array([this.init()])
+    this.formGroup = this.fb.group({
+      group1: this.fb.array([]),
+      group2: this.fb.group({
+        email2: ""
+      })
     });
 
-    this.addItem();
+    const group: any = {};
 
-    // this.formArray = this.formGroup.get("form") as FormArray;
+    this.data.questions.forEach(question => {
+      if (this.isMinMax(question)) {
+        const group = this.fb.group({
+          min: [],
+          max: []
+        });
+        this.group1.push(group);
+      }
+
+      if (this.isMultipleChoice(question)) {
+      }
+    });
+
+    //const test = new FormGroup(group);
+    //console.log(test);
+
+    // this.formGroup = this._formBuilder.group({
+    //   form: this._formBuilder.array([])
+    // });
+
+    // this.form = this.formGroup.get("form") as FormArray;
 
     // this.data.questions.forEach(question => {
     //   if (this.isMinMax(question)) {
@@ -39,7 +66,7 @@ export class SurveyDialogComponent implements OnInit {
     //       min: [question.choosedMin],
     //       max: [question.choosedMax]
     //     });
-    //     this.formArray.push(formGroup);
+    //     this.form.push(formGroup);
     //   }
     //   if (this.isMultipleChoice(question)) {
     //     const formGroup = this._formBuilder.group({
@@ -47,23 +74,9 @@ export class SurveyDialogComponent implements OnInit {
     //       values: [question.values]
     //     });
 
-    //     this.formArray.push(formGroup);
+    //     this.form.push(formGroup);
     //   }
     // });
-
-    console.log(this.form);
-    console.log(this.formGroup);
-  }
-
-  init() {
-    return this._formBuilder.group({
-      cont: new FormControl("", null)
-    });
-  }
-
-  addItem() {
-    this.form = this.formGroup.get("form") as FormArray;
-    this.form.push(this.init());
   }
 
   onClose(): void {
