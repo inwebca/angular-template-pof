@@ -4,9 +4,9 @@
 	<form [formGroup]="formGroup">
 
 		<div *ngFor="let group of form.controls; let i=index;" [formGroupName]="i">
-			{{i}}
-			<div *ngFor="let control of group[i].controls;">
-				1
+
+			<div *ngFor="let control of groupControl(i); let i=index;">
+				{{i}}
 			</div>
 
 

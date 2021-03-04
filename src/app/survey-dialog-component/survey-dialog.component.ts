@@ -32,6 +32,11 @@ export class SurveyDialogComponent implements OnInit {
     return this.formGroup.get("form") as FormArray;
   }
 
+  groupControl(i) {
+    console.log((this.form.controls[i] as FormArray).controls);
+    return (this.form.controls[i] as FormArray).controls;
+  }
+
   ngOnInit() {
     this.formGroup = this.fb.group({
       form: this.fb.array([])
@@ -57,7 +62,12 @@ export class SurveyDialogComponent implements OnInit {
     console.log(this.form.controls);
 
     for (let i = 0; i < this.form.controls.length; i++) {
-      console.log(i);
+      //console.log((this.form.controls[i] as FormArray).controls);
+      const test = this.form.controls[i];
+      //console.log(test);
+      //for (let j = 0; j < test; j++) {
+      // console.log(test[j]);
+      //}
     }
 
     //const test = new FormGroup(group);
