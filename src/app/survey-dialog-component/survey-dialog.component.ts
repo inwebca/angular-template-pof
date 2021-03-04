@@ -8,6 +8,7 @@ import {
   IDriverSurvey,
   IMinMaxQuestion,
   IMultipleChoiceQuestion,
+  IQuestion,
   SurveyService
 } from "../services/survey.service";
 
@@ -24,76 +25,63 @@ export class SurveyDialogComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  get group1() {
-    return this.formGroup.get("group1") as FormArray;
-  }
-
   get form() {
     return this.formGroup.get("form") as FormArray;
   }
 
-  groupControl(i) {
-    console.log((this.form.controls[i] as FormArray).controls);
-    return (this.form.controls[i] as FormArray).controls;
+  get minMax() {
+    return this.formGroup.get("minMax") as FormArray;
+  }
+
+  get multipleChoice() {
+    return this.formGroup.get("multipleChoice") as FormArray;
+  }
+
+  get formArray() {
+    return this.formGroup.get("formArray") as FormArray;
   }
 
   ngOnInit() {
     this.formGroup = this.fb.group({
-      form: this.fb.array([])
+      // formArray: this.fb.array([]),
+      minMax: this.fb.array([]),
+      multipleChoice: this.fb.array([])
     });
 
     this.data.questions.forEach(question => {
       if (this.isMinMax(question)) {
-        const group = this.fb.group({
+        const minMax = this.fb.group({
           min: [],
           max: []
         });
-        this.form.push(group);
+        this.minMax.push(minMax);
+        // this.formArray.push(minMaxTest);
       }
-
       if (this.isMultipleChoice(question)) {
         const group = this.fb.group({
           values: []
         });
-        this.form.push(group);
+        this.multipleChoice.push(group);
+        // this.formArray.push(group);
       }
     });
 
-    console.log(this.form.controls);
-
-    for (let i = 0; i < this.form.controls.length; i++) {
-      //console.log((this.form.controls[i] as FormArray).controls);
-      const test = this.form.controls[i];
-      //console.log(test);
-      //for (let j = 0; j < test; j++) {
-      // console.log(test[j]);
-      //}
-    }
-
-    //const test = new FormGroup(group);
-    //console.log(test);
-
-    // this.formGroup = this._formBuilder.group({
-    //   form: this._formBuilder.array([])
+    // this.formGroup = this.fb.group({
+    //   form: this.fb.array([])
     // });
-
-    // this.form = this.formGroup.get("form") as FormArray;
-
     // this.data.questions.forEach(question => {
     //   if (this.isMinMax(question)) {
-    //     const formGroup = this._formBuilder.group({
-    //       min: [question.choosedMin],
-    //       max: [question.choosedMax]
+    //     const group = this.fb.group({
+    //       min: [],
+    //       max: []
     //     });
-    //     this.form.push(formGroup);
+    //     this.form.push(group);
     //   }
     //   if (this.isMultipleChoice(question)) {
-    //     const formGroup = this._formBuilder.group({
-    //       choices: [question.choices],
-    //       values: [question.values]
+    //     const group = this.fb.group({
+    //       values: []
     //     });
-
-    //     this.form.push(formGroup);
+    //     this.form.push(group);
     //   }
     // });
   }
@@ -103,6 +91,7 @@ export class SurveyDialogComponent implements OnInit {
   }
 
   isMinMax(object: any): object is IMinMaxQuestion {
+    console.log(object);
     return "choosedMin" in object;
   }
 
