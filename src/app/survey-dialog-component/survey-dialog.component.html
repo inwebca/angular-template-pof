@@ -6,93 +6,20 @@
 		{{formGroup.value | json}}
 		<mat-horizontal-stepper>
 			<div *ngFor="let question of data.questions;let i=index;">
-				{{question  | json}}
-				<div [ngSwitch]="getType(question)">
-					<div *ngSwitchCase="'minMax'">
-						<mat-step formGroupName="minMax">
-							<ng-template matStepLabel>{{i+1}}</ng-template>
-							<min-max-component [group]="minMax"></min-max-component>
-						</mat-step>
-					</div>
-					<div *ngSwitchCase="'multipleChoice'">
-						<mat-step formGroupName="multipleChoice">
-							<ng-template matStepLabel>{{i+1}}</ng-template>
-							<min-max-component [group]="minMax"></min-max-component>
-						</mat-step>
-					</div>
-
+				<div *ngIf="isMinMax(question)">
+					<mat-step formGroupName="minMax">
+						<ng-template matStepLabel>{{i+1}}</ng-template>
+						<min-max-component [group]="minMax" [question]="question"></min-max-component>
+					</mat-step>
 				</div>
-
+				<div *ngIf="isMultipleChoice(question)">
+					<mat-step formGroupName="multipleChoice">
+						<ng-template matStepLabel>{{i+1}}</ng-template>
+						<multiple-choice-component [group]="multipleChoice" [question]="question">
+						</multiple-choice-component>
+					</mat-step>
+				</div>
 			</div>
-
-
-			<!-- <mat-step *ngFor="let question of data.questions;let i=index;">
-				<ng-template matStepLabel>{{i+1}}</ng-template>
-				<min-max-component *ngIf="isMinMax(question)" [form]="formGroup"></min-max-component>
-			</mat-step> -->
-
-			<!-- <mat-step formGroupName="minMax" *ngIf="minMax.length > 0">
-				<ng-template matStepLabel>Step</ng-template>
-				<div>
-					<min-max-component [data]="minMax"></min-max-component>
-				</div>
-			</mat-step>
-
-			<mat-step formGroupName="multipleChoice">
-				<ng-template matStepLabel>Step</ng-template>
-				<div>
-					multichoice
-				</div>
-			</mat-step> -->
-
-			<!-- <mat-step [formGroupName]="i" *ngFor="let group of formArray.controls; let i = index">
-				<ng-template matStepLabel>Step {{i + 1}}</ng-template>
-				<div>
-					111
-				</div>
-			</mat-step> -->
-
-			<!-- <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
-				<ng-template matStepLabel>Fill out your name</ng-template>
-				<mat-form-field>
-					<mat-label>First name</mat-label>
-					<input matInput formControlName="firstNameFormCtrl" required>
-					<mat-error>This field is required</mat-error>
-				</mat-form-field>
-
-				<mat-form-field>
-					<mat-label>Last name</mat-label>
-					<input matInput formControlName="lastNameFormCtrl" required>
-					<mat-error>This field is required</mat-error>
-				</mat-form-field>
-				<div>
-					<button mat-button matStepperNext>Next</button>
-				</div>
-			</mat-step>
-
-			<mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
-				<ng-template matStepLabel>
-					<div>Fill out your email address</div>
-				</ng-template>
-				<mat-form-field>
-					<mat-label>Email address</mat-label>
-					<input matInput formControlName="emailFormCtrl">
-					<mat-error>The input is invalid.</mat-error>
-				</mat-form-field>
-				<div>
-					<button mat-button matStepperPrevious>Back</button>
-					<button mat-button matStepperNext>Next</button>
-				</div>
-			</mat-step>
-
-			<mat-step>
-				<ng-template matStepLabel>Confirm your information</ng-template>
-				Everything seems correct.
-				<div>
-					<button mat-button>Done</button>
-					<button type="button" mat-button >Reset</button>
-				</div>
-			</mat-step> -->
 		</mat-horizontal-stepper>
 	</form>
 

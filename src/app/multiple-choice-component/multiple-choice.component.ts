@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import {
   IMinMaxQuestion,
-  IMultipleChoiceQuestion
+  IMultipleChoiceQuestion,
+  IQuestion
 } from "../services/survey.service";
 
 @Component({
@@ -9,9 +11,10 @@ import {
   templateUrl: "./multiple-choice.component.html"
 })
 export class MultipleChoiceComponent implements OnInit {
-  @Input() data: IMultipleChoiceQuestion;
+  @Input() group: FormGroup;
+  @Input() question: IQuestion;
 
   ngOnInit() {
-    console.log(this.data.values);
+    console.log(this.group);
   }
 }

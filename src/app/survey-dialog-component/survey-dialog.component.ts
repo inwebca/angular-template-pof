@@ -25,20 +25,12 @@ export class SurveyDialogComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  get form() {
-    return this.formGroup.get("form") as FormArray;
-  }
-
   get minMax() {
     return this.formGroup.get("minMax") as FormGroup;
   }
 
   get multipleChoice() {
-    return this.formGroup.get("multipleChoice") as FormArray;
-  }
-
-  get formArray() {
-    return this.formGroup.get("formArray") as FormArray;
+    return this.formGroup.get("multipleChoice") as FormGroup;
   }
 
   getType(question): any {
@@ -51,40 +43,20 @@ export class SurveyDialogComponent implements OnInit {
 
     this.data.questions.forEach(question => {
       if (this.isMinMax(question)) {
-        const minMax = this.fb.group({
-          min: [],
-          max: []
+        const group = this.fb.group({
+          min: [question.choosedMin],
+          max: [question.choosedMax]
         });
-        this.formGroup.addControl("minMax", minMax);
-        //this.formArray.push(minMax);
+        this.formGroup.addControl("minMax", group);
       }
       if (this.isMultipleChoice(question)) {
         const group = this.fb.group({
-          values: []
+          values: [question.values],
+          choices: [question.choices]
         });
-        ///this.multipleChoice.push(group);
-        // this.formArray.push(group);
+        this.formGroup.addControl("multipleChoice", group);
       }
     });
-
-    // this.formGroup = this.fb.group({
-    //   form: this.fb.array([])
-    // });
-    // this.data.questions.forEach(question => {
-    //   if (this.isMinMax(question)) {
-    //     const group = this.fb.group({
-    //       min: [],
-    //       max: []
-    //     });
-    //     this.form.push(group);
-    //   }
-    //   if (this.isMultipleChoice(question)) {
-    //     const group = this.fb.group({
-    //       values: []
-    //     });
-    //     this.form.push(group);
-    //   }
-    // });
   }
 
   onClose(): void {
