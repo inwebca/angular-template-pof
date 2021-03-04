@@ -91,7 +91,6 @@ export class SurveyDialogComponent implements OnInit {
   }
 
   isMinMax(object: any): object is IMinMaxQuestion {
-    console.log(object);
     return "choosedMin" in object;
   }
 
