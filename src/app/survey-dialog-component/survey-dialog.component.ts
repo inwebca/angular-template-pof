@@ -43,18 +43,22 @@ export class SurveyDialogComponent implements OnInit {
 
     this.data.questions.forEach(question => {
       if (this.isMinMax(question)) {
-        const group = this.fb.group({
-          min: [question.choosedMin],
-          max: [question.choosedMax]
-        });
-        this.formGroup.addControl("minMax", group);
+        this.formGroup.addControl(
+          "minMax",
+          this.fb.group({
+            min: [question.choosedMin],
+            max: [question.choosedMax]
+          })
+        );
       }
       if (this.isMultipleChoice(question)) {
-        const group = this.fb.group({
-          values: [question.values],
-          choices: [question.choices]
-        });
-        this.formGroup.addControl("multipleChoice", group);
+        this.formGroup.addControl(
+          "multipleChoice",
+          this.fb.group({
+            values: [question.values],
+            choices: [question.choices]
+          })
+        );
       }
     });
   }

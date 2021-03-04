@@ -1,10 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup } from "@angular/forms";
-import {
-  IMinMaxQuestion,
-  IMultipleChoiceQuestion,
-  IQuestion
-} from "../services/survey.service";
+import { IQuestion } from "../services/survey.service";
 
 @Component({
   selector: "multiple-choice-component",
@@ -15,6 +11,6 @@ export class MultipleChoiceComponent implements OnInit {
   @Input() question: IQuestion;
 
   ngOnInit() {
-    console.log(this.group);
+    console.log(this.group.get("values"));
   }
 }
