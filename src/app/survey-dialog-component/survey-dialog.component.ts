@@ -42,11 +42,7 @@ export class SurveyDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
-      // formArray: this.fb.array([]),
-      minMax: this.fb.array([]),
-      multipleChoice: this.fb.array([])
-    });
+    this.formGroup = this.fb.group({});
 
     this.data.questions.forEach(question => {
       if (this.isMinMax(question)) {
@@ -54,14 +50,14 @@ export class SurveyDialogComponent implements OnInit {
           min: [],
           max: []
         });
-        this.minMax.push(minMax);
-        // this.formArray.push(minMaxTest);
+        this.formGroup.addControl("minMax", minMax);
+        //this.formArray.push(minMax);
       }
       if (this.isMultipleChoice(question)) {
         const group = this.fb.group({
           values: []
         });
-        this.multipleChoice.push(group);
+        ///this.multipleChoice.push(group);
         // this.formArray.push(group);
       }
     });

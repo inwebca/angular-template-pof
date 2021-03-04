@@ -3,9 +3,25 @@
 	<p>Survey id: {{data.id}}</p>
 
 	<form [formGroup]="formGroup">
+		{{formGroup.value | json}}
 		<mat-horizontal-stepper>
+			<div *ngFor="let question of data.questions;let i=index;">
+				<div *ngIf="isMinMax(question)">
+					<mat-step formGroupName="minMax">
+						<ng-template matStepLabel>{{i+1}}</ng-template>
+						<min-max-component [min]="min" [max]="max"></min-max-component>
+					</mat-step>
+				</div>
 
-			<mat-step formGroupName="minMax" *ngIf="minMax.length > 0">
+			</div>
+
+
+			<!-- <mat-step *ngFor="let question of data.questions;let i=index;">
+				<ng-template matStepLabel>{{i+1}}</ng-template>
+				<min-max-component *ngIf="isMinMax(question)" [form]="formGroup"></min-max-component>
+			</mat-step> -->
+
+			<!-- <mat-step formGroupName="minMax" *ngIf="minMax.length > 0">
 				<ng-template matStepLabel>Step</ng-template>
 				<div>
 					<min-max-component [data]="minMax"></min-max-component>
@@ -17,7 +33,7 @@
 				<div>
 					multichoice
 				</div>
-			</mat-step>
+			</mat-step> -->
 
 			<!-- <mat-step [formGroupName]="i" *ngFor="let group of formArray.controls; let i = index">
 				<ng-template matStepLabel>Step {{i + 1}}</ng-template>
